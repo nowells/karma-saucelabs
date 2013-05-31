@@ -37,11 +37,16 @@ var createSauceConnect = function(config, logger, emitter) {
         process.once('SIGHUP', exit);
 
         tunnel.stdout.on('data', function(data) {
+            log.debug(data.toString());
             if (sauceConnected.exec(data.toString())) {
                 connected = true;
                 log.info('SauceLabs Connected Successfully!');
                 done(content);
             }
+        });
+
+        tunnel.stderr.on('data', function(data) {
+            log.debug(data.toString());
         });
 
         setTimeout(function() {
