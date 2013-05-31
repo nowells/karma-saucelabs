@@ -24,10 +24,16 @@ var createSauceConnect = function(config, logger, emitter) {
 
         exit = function(code) {
             log.info('Killing SauceLabs Tunnel');
-            tunnel.on('close', function() {
-                process.exit(code);
-            });
-            tunnel.kill();
+            if (typeof(code) !== 'function') {
+                tunnel.on('close', function() {
+                    process.exit(code);
+                });
+                tunnel.kill();
+            }
+            else {
+                tunnel.kill();
+                code();
+            }
         };
 
         emitter.once('exit', exit);
