@@ -1,0 +1,19 @@
+{
+  "name": "karma-saucelabs",
+  "version": "0.0.1",
+  "description": "A Karma plugin. SauceLabs Connect and SauceLabs OnDemand support.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "karma-plugin"
+  ],
+  "author": "Nowell Strite <nowell@strite.org>",
+  "dependencies": {
+  },
+  "peerDependencies": {
+    "karma": "~0.9"
+  },
+  "license": "MIT"
+}
